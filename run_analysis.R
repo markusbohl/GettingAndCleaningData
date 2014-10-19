@@ -54,4 +54,5 @@ rm(training_desc_lbls)
 # each subject
 tidy <- mean_std_activity_data %>% group_by(activity) %>% summarise_each(funs(mean))
 
+# remove what is not needed anymore
 rm(mean_std_activity_data)
