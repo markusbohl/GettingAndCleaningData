@@ -15,10 +15,11 @@ The data used in this analysis is part of the [Human Activity Recognition Using 
 * `features.txt`
 
 More specifically, an R script called `run_analysis.R` has to be created that does the following:
+
 1. Merges the training and the test sets to create one data set.
-2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+2. Extracts only the measurements on the mean and standard deviation for each measurement.
 3. Uses descriptive activity names to name the activities in the data set.
-4. Appropriately labels the data set with descriptive variable names. 
+4. Appropriately labels the data set with descriptive variable names.
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 That is, the `run_analysis.R` file contains the script that basically does all the work and finally creates a clean data set. The result was written to the `tidy_data_set.txt` file.
