@@ -144,12 +144,12 @@ Tidy data
 
 The `run_analysis.R` script produces a data frame called `tidy`. To get an idea how it looks like, the first three (of 66) average columns per activity are shown below.
 
+|   |      activity      | tBodyAcc.mean...X | tBodyAcc.mean...Y | tBodyAcc.mean...Z |
+|---|:------------------:|:-----------------:|:-----------------:|:-----------------:|
+| 1 | LAYING             |         0.2686486 |       -0.01831773 |        -0.1074356 |
+| 2 | SITTING            |         0.2730596 |       -0.01268957 |        -0.1055170 |
+| 3 | STANDING           |         0.2791535 |       -0.01615189 |        -0.1065869 |
+| 4 | WALKING            |         0.2763369 |       -0.01790683 |        -0.1088817 |
+| 5 | WALKING_DOWNSTAIRS |         0.2881372 |       -0.01631193 |        -0.1057616 |
+| 6 | WALKING_UPSTAIRS   |         0.2622946 |       -0.02592329 |        -0.1205379 |
 
-`            activity tBodyAcc.mean...X tBodyAcc.mean...Y tBodyAcc.mean...Z
-1             LAYING         0.2686486       -0.01831773        -0.1074356
-2            SITTING         0.2730596       -0.01268957        -0.1055170
-3           STANDING         0.2791535       -0.01615189        -0.1065869
-4            WALKING         0.2763369       -0.01790683        -0.1088817
-5 WALKING_DOWNSTAIRS         0.2881372       -0.01631193        -0.1057616
-6   WALKING_UPSTAIRS         0.2622946       -0.02592329        -0.1205379
-`
