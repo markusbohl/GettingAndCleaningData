@@ -43,83 +43,113 @@ Their feature selection is described as follows:
 Variables
 ---------
 
-* activity
-* tBodyAcc.mean...X
-* tBodyAcc.mean...Y
-* tBodyAcc.mean...Z
-* tBodyAcc.std...X
-* tBodyAcc.std...Y
-* tBodyAcc.std...Z
-* tGravityAcc.mean...X
-* tGravityAcc.mean...Y
-* tGravityAcc.mean...Z
-* tGravityAcc.std...X
-* tGravityAcc.std...Y
-* tGravityAcc.std...Z
-* tBodyAccJerk.mean...X
-* tBodyAccJerk.mean...Y
-* tBodyAccJerk.mean...Z
-* tBodyAccJerk.std...X
-* tBodyAccJerk.std...Y
-* tBodyAccJerk.std...Z
-* tBodyGyro.mean...X
-* tBodyGyro.mean...Y
-* tBodyGyro.mean...Z
-* tBodyGyro.std...X
-* tBodyGyro.std...Y
-* tBodyGyro.std...Z
-* tBodyGyroJerk.mean...X
-* tBodyGyroJerk.mean...Y
-* tBodyGyroJerk.mean...Z
-* tBodyGyroJerk.std...X
-* tBodyGyroJerk.std...Y
-* tBodyGyroJerk.std...Z
-* tBodyAccMag.mean..
-* tBodyAccMag.std..
-* tGravityAccMag.mean..
-* tGravityAccMag.std..
-* tBodyAccJerkMag.mean..
-* tBodyAccJerkMag.std..
-* tBodyGyroMag.mean..
-* tBodyGyroMag.std..
-* tBodyGyroJerkMag.mean..
-* tBodyGyroJerkMag.std..
-* fBodyAcc.mean...X
-* fBodyAcc.mean...Y
-* fBodyAcc.mean...Z
-* fBodyAcc.std...X
-* fBodyAcc.std...Y
-* fBodyAcc.std...Z
-* fBodyAccJerk.mean...X
-* fBodyAccJerk.mean...Y
-* fBodyAccJerk.mean...Z
-* fBodyAccJerk.std...X
-* fBodyAccJerk.std...Y
-* fBodyAccJerk.std...Z
-* fBodyGyro.mean...X
-* fBodyGyro.mean...Y
-* fBodyGyro.mean...Z
-* fBodyGyro.std...X
-* fBodyGyro.std...Y
-* fBodyGyro.std...Z
-* fBodyAccMag.mean..
-* fBodyAccMag.std..
-* fBodyBodyAccJerkMag.mean..
-* fBodyBodyAccJerkMag.std..
-* fBodyBodyGyroMag.mean..
-* fBodyBodyGyroMag.std..
-* fBodyBodyGyroJerkMag.mean..
-* fBodyBodyGyroJerkMag.std..
+The created tidy data set contains the following variables:
+
+* `activity`
+* `tBodyAcc.mean...X`
+* `tBodyAcc.mean...Y`
+* `tBodyAcc.mean...Z`
+* `tBodyAcc.std...X`
+* `tBodyAcc.std...Y`
+* `tBodyAcc.std...Z`
+* `tGravityAcc.mean...X`
+* `tGravityAcc.mean...Y`
+* `tGravityAcc.mean...Z`
+* `tGravityAcc.std...X`
+* `tGravityAcc.std...Y`
+* `tGravityAcc.std...Z`
+* `tBodyAccJerk.mean...X`
+* `tBodyAccJerk.mean...Y`
+* `tBodyAccJerk.mean...Z`
+* `tBodyAccJerk.std...X`
+* `tBodyAccJerk.std...Y`
+* `tBodyAccJerk.std...Z`
+* `tBodyGyro.mean...X`
+* `tBodyGyro.mean...Y`
+* `tBodyGyro.mean...Z`
+* `tBodyGyro.std...X`
+* `tBodyGyro.std...Y`
+* `tBodyGyro.std...Z`
+* `tBodyGyroJerk.mean...X`
+* `tBodyGyroJerk.mean...Y`
+* `tBodyGyroJerk.mean...Z`
+* `tBodyGyroJerk.std...X`
+* `tBodyGyroJerk.std...Y`
+* `tBodyGyroJerk.std...Z`
+* `tBodyAccMag.mean..`
+* `tBodyAccMag.std..`
+* `tGravityAccMag.mean..`
+* `tGravityAccMag.std..`
+* `tBodyAccJerkMag.mean..`
+* `tBodyAccJerkMag.std..`
+* `tBodyGyroMag.mean..`
+* `tBodyGyroMag.std..`
+* `tBodyGyroJerkMag.mean..`
+* `tBodyGyroJerkMag.std..`
+* `fBodyAcc.mean...X`
+* `fBodyAcc.mean...Y`
+* `fBodyAcc.mean...Z`
+* `fBodyAcc.std...X`
+* `fBodyAcc.std...Y`
+* `fBodyAcc.std...Z`
+* `fBodyAccJerk.mean...X`
+* `fBodyAccJerk.mean...Y`
+* `fBodyAccJerk.mean...Z`
+* `fBodyAccJerk.std...X`
+* `fBodyAccJerk.std...Y`
+* `fBodyAccJerk.std...Z`
+* `fBodyGyro.mean...X`
+* `fBodyGyro.mean...Y`
+* `fBodyGyro.mean...Z`
+* `fBodyGyro.std...X`
+* `fBodyGyro.std...Y`
+* `fBodyGyro.std...Z`
+* `fBodyAccMag.mean..`
+* `fBodyAccMag.std..`
+* `fBodyBodyAccJerkMag.mean..`
+* `fBodyBodyAccJerkMag.std..`
+* `fBodyBodyGyroMag.mean..`
+* `fBodyBodyGyroMag.std..`
+* `fBodyBodyGyroJerkMag.mean..`
+* `fBodyBodyGyroJerkMag.std..`
+
+From the original data, only mean (`.mean.`) and standard deviation (`.std.`) values have been processed. 
 
 Data
 ----
 
+The `activity` variable can contain one of the following values and obviously describe the activity conducted while the original acceleration values were measured:
+
+* WALKING
+* WALKING_UPSTAIRS
+* WALKING_DOWNSTAIRS
+* SITTING
+* STANDING
+* LAYING
+
+All other variables show an average value calculated from the original values grouped by activity.
 
 Transformations
 ---------------
+
+The key transformation (grouping and average calculation) was conducted by
+
+`tidy <- mean_std_activity_data %>% group_by(activity) %>% summarise_each(funs(mean))`
+
+where `mean_std_activity_data` is a data frame containing ungrouped data for each variable.
 
 
 Tidy data
 ---------
 
+The `run_analysis.R` script produces a data frame called `tidy`. To get an idea how it looks like, the first three (of 66) average columns per activity are shown below.
 
+
+`            activity tBodyAcc.mean...X tBodyAcc.mean...Y tBodyAcc.mean...Z
+1             LAYING         0.2686486       -0.01831773        -0.1074356
+2            SITTING         0.2730596       -0.01268957        -0.1055170
+3           STANDING         0.2791535       -0.01615189        -0.1065869
+4            WALKING         0.2763369       -0.01790683        -0.1088817
+5 WALKING_DOWNSTAIRS         0.2881372       -0.01631193        -0.1057616
+6   WALKING_UPSTAIRS         0.2622946       -0.02592329        -0.1205379
+`
